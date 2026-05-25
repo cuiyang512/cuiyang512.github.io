@@ -20,8 +20,9 @@ The current CV file is stored at `cv/Yang_s_CV_new.pdf`. When updating the
 homepage, use the CV as the source of truth and avoid adding unsourced
 information.
 
-The homepage expects a personal photo at `assets/profile.jpg`. If that file is
-missing, the page falls back to initials in the profile photo area.
+The homepage uses the GitHub profile photo from `https://github.com/cuiyang512.png`
+in the profile area. If the remote image cannot load, the page falls back to
+initials.
 
 To preview locally, open `index.html` in a browser or run a simple static server:
 

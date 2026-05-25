@@ -6,13 +6,16 @@
     <title>Yang Cui - Homepage</title>
     <style>
       :root {
-        --bg: #ffffff;
+        --bg: #fbfbf8;
+        --paper: #ffffff;
         --ink: #222222;
-        --muted: #666666;
-        --line: #dddddd;
-        --soft: #f7f7f7;
-        --link: #1772b8;
-        --link-dark: #0f4f80;
+        --muted: #646464;
+        --line: #d8ddd9;
+        --soft: #eef3ef;
+        --accent: #226f54;
+        --accent-strong: #174f3c;
+        --link: #1667a6;
+        --link-dark: #0d466f;
       }
 
       * {
@@ -48,7 +51,8 @@
         top: 0;
         z-index: 10;
         border-bottom: 1px solid var(--line);
-        background: rgba(255, 255, 255, 0.96);
+        background: rgba(251, 251, 248, 0.96);
+        backdrop-filter: blur(12px);
       }
 
       .nav {
@@ -69,26 +73,32 @@
 
       .layout {
         display: grid;
-        grid-template-columns: 270px minmax(0, 1fr);
-        gap: 42px;
+        grid-template-columns: 292px minmax(0, 1fr);
+        gap: 44px;
         width: min(1120px, calc(100% - 32px));
         margin: 0 auto;
-        padding: 34px 0 60px;
+        padding: 38px 0 60px;
       }
 
       .profile {
         position: sticky;
         top: 74px;
         align-self: start;
-        text-align: center;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--paper);
+        padding: 24px;
+        box-shadow: 0 18px 45px rgba(33, 44, 38, 0.06);
       }
 
       .photo-wrap {
         position: relative;
-        width: 210px;
-        height: 210px;
+        width: 100%;
+        max-width: 228px;
+        aspect-ratio: 1;
         margin: 0 auto 18px;
-        border-radius: 50%;
+        border: 1px solid var(--line);
+        border-radius: 8px;
         background: var(--soft);
         overflow: hidden;
       }
@@ -118,7 +128,7 @@
 
       .profile h1 {
         margin: 0 0 6px;
-        font-size: 1.6rem;
+        font-size: 1.7rem;
         line-height: 1.2;
       }
 
@@ -141,6 +151,62 @@
 
       .profile li {
         margin: 7px 0;
+      }
+
+      .contact-label {
+        display: inline-block;
+        min-width: 66px;
+        color: var(--muted);
+      }
+
+      .hero {
+        padding: 4px 0 18px;
+      }
+
+      .eyebrow {
+        margin: 0 0 8px;
+        color: var(--accent);
+        font-weight: 700;
+      }
+
+      .hero h2 {
+        max-width: 760px;
+        margin: 0 0 14px;
+        border: 0;
+        font-size: clamp(2rem, 4vw, 3.1rem);
+        line-height: 1.08;
+      }
+
+      .hero .lead {
+        max-width: 740px;
+        color: #3d3d3d;
+        font-size: 1.08rem;
+      }
+
+      .quick-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .quick-links a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 36px;
+        padding: 0 12px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--paper);
+        color: var(--ink);
+        font-weight: 600;
+      }
+
+      .quick-links a:hover,
+      .quick-links a:focus {
+        border-color: var(--accent);
+        color: var(--accent-strong);
+        text-decoration: none;
       }
 
       main section {
@@ -183,7 +249,7 @@
 
       .tag {
         display: inline-block;
-        min-width: 88px;
+        min-width: 94px;
         margin-right: 4px;
         color: var(--muted);
         font-family: Menlo, Consolas, monospace;
@@ -217,7 +283,6 @@
 
         .profile {
           position: static;
-          text-align: left;
         }
 
         .photo-wrap {
@@ -234,9 +299,11 @@
         <a href="#">Homepage</a>
         <a href="#about">About Me</a>
         <a href="#news">News</a>
+        <a href="#research">Research</a>
         <a href="#publications">Publications</a>
+        <a href="#presentations">Presentations</a>
         <a href="#experience">Experience</a>
-        <a href="#education">Educations</a>
+        <a href="#education">Education</a>
         <a href="#awards">Honors and Awards</a>
         <a href="#teaching">Teaching</a>
       </nav>
@@ -246,23 +313,40 @@
       <aside class="profile">
         <div class="photo-wrap">
           <div class="photo-fallback">YC</div>
-          <img class="photo" src="assets/profile.jpg" alt="Yang Cui" onerror="this.style.display='none'">
+          <img class="photo" src="https://github.com/cuiyang512.png?size=456" alt="Portrait of Yang Cui" onerror="this.style.display='none'">
         </div>
         <h1>Yang Cui</h1>
-        <p class="affiliation">Uppsala University</p>
+        <p class="affiliation">Ph.D. Candidate in Geophysics<br>Uppsala University</p>
         <p class="focus">
           Focusing on scientific machine learning for geophysics, distributed
           acoustic sensing, neural operators, and waveform inversion.
         </p>
         <ul>
-          <li>Uppsala, Sweden</li>
-          <li><a href="mailto:yang.cui512@gmail.com">Email</a></li>
-          <li><a href="https://github.com/cuiyang512">Github</a></li>
-          <li><a href="cv/Yang_s_CV_new.pdf">CV</a></li>
+          <li><span class="contact-label">Location</span>Uppsala, Sweden</li>
+          <li><span class="contact-label">Email</span><a href="mailto:yang.cui512@gmail.com">yang.cui512@gmail.com</a></li>
+          <li><span class="contact-label">GitHub</span><a href="https://github.com/cuiyang512">cuiyang512</a></li>
+          <li><span class="contact-label">CV</span><a href="cv/Yang_s_CV_new.pdf">Download PDF</a></li>
         </ul>
       </aside>
 
       <main>
+        <section class="hero" aria-labelledby="intro-title">
+          <p class="eyebrow">Scientific machine learning for geophysics</p>
+          <h2 id="intro-title">DAS processing, neural operators, and waveform inversion for seismic applications.</h2>
+          <p class="lead">
+            I develop machine-learning and signal-processing methods for
+            distributed acoustic sensing, seismic denoising, reconstruction,
+            earthquake detection, and geophysical inversion.
+          </p>
+          <div class="quick-links" aria-label="Profile links">
+            <a href="#publications">Publications</a>
+            <a href="#presentations">Presentations</a>
+            <a href="#research">Research Areas</a>
+            <a href="cv/Yang_s_CV_new.pdf">CV</a>
+            <a href="mailto:yang.cui512@gmail.com">Contact</a>
+          </div>
+        </section>
+
         <section id="about">
           <h2>About Me</h2>
           <p>
@@ -306,9 +390,25 @@
               <em>IEEE Transactions on Geoscience and Remote Sensing</em>.
             </li>
             <li>
+              <span class="date">2025:</span> Presented conference work at the
+              SEG International Exposition and Annual Meeting and the 86th EAGE
+              Annual Conference &amp; Exhibition.
+            </li>
+            <li>
               <span class="date">2025:</span> Finalist, Machine Learning
               Competition, KFUPM.
             </li>
+          </ul>
+        </section>
+
+        <section id="research">
+          <h2>Research Areas</h2>
+          <ul class="compact-list">
+            <li>Scientific machine learning for geophysics and AI4GEO.</li>
+            <li>Distributed acoustic sensing data processing and DAS-VSP denoising.</li>
+            <li>Neural operators for seismic reconstruction and denoising.</li>
+            <li>Earthquake signal detection, surface-wave processing, and inversion.</li>
+            <li>Full waveform inversion and physics-aware learning.</li>
           </ul>
         </section>
 
@@ -352,6 +452,13 @@
           <h3>Journal Articles - Co-Author</h3>
           <ol class="pub-list">
             <li>
+              <span class="tag">arXiv</span>Zhao, J., Waheed, U. B., Sun, J.,
+              Cui, Yang, Savva, N. &amp; Verschuur, E. Parameter-Efficient
+              Adaptation of Pre-Trained Vision Foundation Models for Active and
+              Passive Seismic Data Denoising. <em>arXiv preprint</em>
+              arXiv:2605.10953 (2026).
+            </li>
+            <li>
               <span class="tag">Sci Rep</span>Al-Qadasi, B., Cui, Yang,
               Waheed, U. B. &amp; Wang, H. F. A novel deep-learning model to
               convert DAS strain to geophone particle velocity: application to
@@ -364,13 +471,6 @@
               U-Net-Enhanced Fourier neural operator for 3D seismic
               reconstruction. <em>Artificial Intelligence in Geosciences</em>,
               100212 (2026).
-            </li>
-            <li>
-              <span class="tag">arXiv</span>Zhao, J., Waheed, U. b., Sun, J.,
-              Cui, Yang, Savva, N. &amp; Verschuur, E. Parameter-Efficient
-              Adaptation of Pre-Trained Vision Foundation Models for Active and
-              Passive Seismic Data Denoising. <em>arXiv preprint</em>
-              arXiv:2605.10953 (2026).
             </li>
             <li>
               <span class="tag">TGRS</span>Bai, M., Yang, B., Wu, J., Zhou,
@@ -388,6 +488,63 @@
             </li>
           </ol>
           <p class="note">&dagger; Equal contribution.</p>
+        </section>
+
+        <section id="presentations">
+          <h2>Conference Presentations</h2>
+          <ol class="pub-list">
+            <li>
+              <span class="tag">SEG 2025</span>Cui, Yang, Waheed, U. B., Song,
+              C. &amp; Chen, Y. Leveraging Kolmogorov-Arnold network empowered
+              Fourier neural operator to solve Eikonal equation. <em>SEG
+              International Exposition and Annual Meeting</em>, SEG-2025
+              (2025).
+            </li>
+            <li>
+              <span class="tag">EAGE 2025</span>Traversa, A., Cui, Y. &amp;
+              Waheed, U. B. Learning a Robust 3D Seismic Data Reconstruction
+              Operator using UFNO. <em>86th EAGE Annual Conference &amp;
+              Exhibition</em>, 1-5 (2025).
+            </li>
+            <li>
+              <span class="tag">EAGE 2025</span>Cui, Y., Huff, O. R., Waheed,
+              U. B., Lie, J. E., Evensen, A. K. &amp; Bugge, A. J. Marine
+              Seismic Near Offset Data Reconstruction Using a KAN-Powered FNO.
+              <em>86th EAGE Annual Conference &amp; Exhibition</em>, 1-5
+              (2025).
+            </li>
+            <li>
+              <span class="tag">EAGE 2025</span>Cui, Y., Waheed, U. B. &amp;
+              Chen, Y. Robust DAS Denoising Using a Self-Supervised Method with
+              Kurtosis-Based Feature Selection. <em>86th EAGE Annual Conference
+              &amp; Exhibition</em>, 1-5 (2025).
+            </li>
+            <li>
+              <span class="tag">EAGE 2025</span>Abdullin, A., Waheed, U. B.
+              &amp; Cui, Y. Seismic Event Detection with Fourier Neural
+              Operator. <em>86th EAGE Annual Conference &amp; Exhibition</em>,
+              1-5 (2025).
+            </li>
+            <li>
+              <span class="tag">AGU 2024</span>Waheed, U. B., Al-Qadasi, B.
+              &amp; Cui, Yang. Evaluating seismic array processing using a
+              novel Deep Learning-based converted DAS strain-ground particle
+              velocity at Brady geothermal field. <em>AGU Fall Meeting
+              Abstracts</em>, S21G-3487 (2024).
+            </li>
+            <li>
+              <span class="tag">SEG 2024</span>Cui, Yang, Waheed, U. B. &amp;
+              Chen, Y. Background noise suppression for DAS-VSP data using
+              attention-based deep image prior. <em>SEG International
+              Exposition and Annual Meeting</em>, SEG-2024 (2024).
+            </li>
+            <li>
+              <span class="tag">SEG 2024</span>Zhou, Y., Cui, Yang &amp;
+              Hanafy, S. Super-virtual interferometry for noise elimination on
+              vertical seismic profiling (VSP). <em>SEG International
+              Exposition and Annual Meeting</em>, SEG-2024 (2024).
+            </li>
+          </ol>
         </section>
 
         <section id="experience">
@@ -409,7 +566,7 @@
         </section>
 
         <section id="education">
-          <h2>Educations</h2>
+          <h2>Education</h2>
           <ul class="compact-list">
             <li>
               <span class="date">2026-Now:</span> Ph.D. Candidate in
@@ -455,7 +612,8 @@
 
     <footer>
       Last updated: May 25, 2026. Content is based on the CV in
-      <a href="cv/Yang_s_CV_new.pdf">cv/Yang_s_CV_new.pdf</a>.
+      <a href="cv/Yang_s_CV_new.pdf">cv/Yang_s_CV_new.pdf</a> and the
+      publication bibliography in <a href="bib/ref.bib">bib/ref.bib</a>.
     </footer>
   </body>
 </html>
