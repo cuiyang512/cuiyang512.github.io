@@ -1,11 +1,461 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Yang's Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Yang Cui - Homepage</title>
+    <style>
+      :root {
+        --bg: #ffffff;
+        --ink: #222222;
+        --muted: #666666;
+        --line: #dddddd;
+        --soft: #f7f7f7;
+        --link: #1772b8;
+        --link-dark: #0f4f80;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+        font-size: 15px;
+        line-height: 1.55;
+      }
+
+      a {
+        color: var(--link);
+        text-decoration: none;
+      }
+
+      a:hover,
+      a:focus {
+        color: var(--link-dark);
+        text-decoration: underline;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.96);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+        min-height: 48px;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+
+      .nav a:first-child {
+        color: var(--ink);
+        font-weight: 700;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: 270px minmax(0, 1fr);
+        gap: 42px;
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 34px 0 60px;
+      }
+
+      .profile {
+        position: sticky;
+        top: 74px;
+        align-self: start;
+        text-align: center;
+      }
+
+      .photo-wrap {
+        position: relative;
+        width: 210px;
+        height: 210px;
+        margin: 0 auto 18px;
+        border-radius: 50%;
+        background: var(--soft);
+        overflow: hidden;
+      }
+
+      .photo-fallback {
+        display: grid;
+        width: 100%;
+        height: 100%;
+        place-items: center;
+        color: #777777;
+        font-size: 3.2rem;
+        font-weight: 700;
+      }
+
+      .photo {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .photo:not([src]),
+      .photo[src=""] {
+        display: none;
+      }
+
+      .profile h1 {
+        margin: 0 0 6px;
+        font-size: 1.6rem;
+        line-height: 1.2;
+      }
+
+      .profile .affiliation {
+        margin: 0 0 12px;
+        color: var(--muted);
+      }
+
+      .profile .focus {
+        margin: 0 0 16px;
+        text-align: left;
+      }
+
+      .profile ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-align: left;
+      }
+
+      .profile li {
+        margin: 7px 0;
+      }
+
+      main section {
+        padding-top: 14px;
+        margin-bottom: 34px;
+      }
+
+      h2 {
+        margin: 0 0 14px;
+        border-bottom: 1px solid var(--line);
+        font-size: 1.55rem;
+        line-height: 1.25;
+      }
+
+      h3 {
+        margin: 22px 0 10px;
+        font-size: 1rem;
+      }
+
+      p {
+        margin: 0 0 12px;
+      }
+
+      .news,
+      .compact-list,
+      .pub-list {
+        margin: 0;
+        padding-left: 20px;
+      }
+
+      .news li,
+      .compact-list li,
+      .pub-list li {
+        margin: 8px 0;
+      }
+
+      .pub-list li {
+        margin-bottom: 13px;
+      }
+
+      .tag {
+        display: inline-block;
+        min-width: 88px;
+        margin-right: 4px;
+        color: var(--muted);
+        font-family: Menlo, Consolas, monospace;
+        font-size: 0.88rem;
+      }
+
+      .date {
+        color: var(--muted);
+        font-weight: 700;
+      }
+
+      .note {
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      footer {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 20px 0 36px;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      @media (max-width: 820px) {
+        .layout {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+
+        .profile {
+          position: static;
+          text-align: left;
+        }
+
+        .photo-wrap {
+          margin-left: 0;
+          width: 180px;
+          height: 180px;
+        }
+      }
+    </style>
   </head>
   <body>
-    <h1>Hi there! I am Yang Cui</h1>
-    <p>Welcome to my Github profile!</p>
+    <header class="topbar">
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#">Homepage</a>
+        <a href="#about">About Me</a>
+        <a href="#news">News</a>
+        <a href="#publications">Publications</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Educations</a>
+        <a href="#awards">Honors and Awards</a>
+        <a href="#teaching">Teaching</a>
+      </nav>
+    </header>
+
+    <div class="layout">
+      <aside class="profile">
+        <div class="photo-wrap">
+          <div class="photo-fallback">YC</div>
+          <img class="photo" src="assets/profile.jpg" alt="Yang Cui" onerror="this.style.display='none'">
+        </div>
+        <h1>Yang Cui</h1>
+        <p class="affiliation">Uppsala University</p>
+        <p class="focus">
+          Focusing on scientific machine learning for geophysics, distributed
+          acoustic sensing, neural operators, and waveform inversion.
+        </p>
+        <ul>
+          <li>Uppsala, Sweden</li>
+          <li><a href="mailto:yang.cui512@gmail.com">Email</a></li>
+          <li><a href="https://github.com/cuiyang512">Github</a></li>
+          <li><a href="cv/Yang_s_CV_new.pdf">CV</a></li>
+        </ul>
+      </aside>
+
+      <main>
+        <section id="about">
+          <h2>About Me</h2>
+          <p>
+            I am a Ph.D. Candidate in Geophysics at Uppsala University,
+            Sweden, supervised by Dr. Myrto Papadopoulou and Dr. Ayse Kaslilar
+            Sisman.
+          </p>
+          <p>
+            My research interests include scientific machine learning for
+            geophysics (AI4GEO), distributed acoustic sensing (DAS),
+            surface-wave processing and inversion, neural operators, earthquake
+            seismology, and full waveform inversion (FWI).
+          </p>
+          <p>
+            I received my M.Sc. in Geophysics from King Fahd University of
+            Petroleum &amp; Minerals and my B.Eng. in Exploration Technology
+            and Engineering from Yangtze University.
+          </p>
+        </section>
+
+        <section id="news">
+          <h2>News</h2>
+          <ul class="news">
+            <li>
+              <span class="date">2026:</span> Started as a Ph.D. Candidate in
+              Geophysics at Uppsala University.
+            </li>
+            <li>
+              <span class="date">2026:</span> 3rd Place, 10th SEG Europe
+              Virtual Student Conference.
+            </li>
+            <li>
+              <span class="date">2026:</span> Co-authored journal articles in
+              <em>Scientific Reports</em> and <em>Artificial Intelligence in
+              Geosciences</em>, and an arXiv preprint on seismic data
+              denoising.
+            </li>
+            <li>
+              <span class="date">2025:</span> Published first-author journal
+              articles in <em>Geophysical Journal International</em> and
+              <em>IEEE Transactions on Geoscience and Remote Sensing</em>.
+            </li>
+            <li>
+              <span class="date">2025:</span> Finalist, Machine Learning
+              Competition, KFUPM.
+            </li>
+          </ul>
+        </section>
+
+        <section id="publications">
+          <h2>Publications</h2>
+          <h3>Journal Articles - First Author</h3>
+          <ol class="pub-list">
+            <li>
+              <span class="tag">arXiv</span>Cui, Yang, Anikiev, D., Waheed,
+              U. B. &amp; Chen, Y. Learning from Imperfect Labels: A
+              Physics-Aware Neural Operator with Application to DAS Data
+              Denoising. <em>arXiv preprint</em> arXiv:2511.15638 (2025).
+            </li>
+            <li>
+              <span class="tag">GJI</span>Cui, Yang, Bai, M., Wu, J. &amp;
+              Chen, Y. Earthquake signal detection using a multiscale feature
+              fusion network with hybrid attention mechanism.
+              <em>Geophysical Journal International</em> 240, 988-1008 (2025).
+            </li>
+            <li>
+              <span class="tag">TGRS</span>Cui, Yang, Waheed, U. B. &amp;
+              Chen, Y. Unsupervised deep learning for DAS-VSP denoising using
+              attention-based deep image prior. <em>IEEE Transactions on
+              Geoscience and Remote Sensing</em> 63, 1-14 (2025).
+            </li>
+            <li>
+              <span class="tag">TGRS</span>Cui, Yang, Bai, M., Zhou, Z. &amp;
+              Chen, Y. One-dimensional dictionary learning with variational
+              sparse representation for single-channel seismic denoising.
+              <em>IEEE Transactions on Geoscience and Remote Sensing</em> 62,
+              1-13 (2024).
+            </li>
+            <li>
+              <span class="tag">Geophysics</span>Cui, Yang, Wu, J., Bai, M.
+              &amp; Chen, Y. Ground-truth-free deep learning for 3D seismic
+              denoising and reconstruction with channel attention mechanism.
+              <em>Geophysics</em> 89, V503-V520 (2024).
+            </li>
+          </ol>
+
+          <h3>Journal Articles - Co-Author</h3>
+          <ol class="pub-list">
+            <li>
+              <span class="tag">Sci Rep</span>Al-Qadasi, B., Cui, Yang,
+              Waheed, U. B. &amp; Wang, H. F. A novel deep-learning model to
+              convert DAS strain to geophone particle velocity: application to
+              PoroTomo data from the Brady geothermal field.
+              <em>Scientific Reports</em> (2026).
+            </li>
+            <li>
+              <span class="tag">AIG</span>Traversa, A., Cui, Yang&dagger;,
+              Waheed, U. B. &amp; Chen, Y. SeisReconNO: Leveraging a
+              U-Net-Enhanced Fourier neural operator for 3D seismic
+              reconstruction. <em>Artificial Intelligence in Geosciences</em>,
+              100212 (2026).
+            </li>
+            <li>
+              <span class="tag">arXiv</span>Zhao, J., Waheed, U. b., Sun, J.,
+              Cui, Yang, Savva, N. &amp; Verschuur, E. Parameter-Efficient
+              Adaptation of Pre-Trained Vision Foundation Models for Active and
+              Passive Seismic Data Denoising. <em>arXiv preprint</em>
+              arXiv:2605.10953 (2026).
+            </li>
+            <li>
+              <span class="tag">TGRS</span>Bai, M., Yang, B., Wu, J., Zhou,
+              Z., Cui, Yang, Ma, Z. &amp; Zeng, Y. Efficient Convolutional
+              Sparse Coding Based on Penalized Weighted Least Squares for
+              Seismic Data Denoising. <em>IEEE Transactions on Geoscience and
+              Remote Sensing</em> 62, 1-12 (2024).
+            </li>
+            <li>
+              <span class="tag">TGRS</span>Zhou, Z., Bai, M., Wu, J. &amp;
+              Cui, Yang. Coherent noise attenuation by kurtosis-guided adaptive
+              dictionary learning based on variational sparse representation.
+              <em>IEEE Transactions on Geoscience and Remote Sensing</em> 61,
+              1-10 (2023).
+            </li>
+          </ol>
+          <p class="note">&dagger; Equal contribution.</p>
+        </section>
+
+        <section id="experience">
+          <h2>Experience</h2>
+          <ul class="compact-list">
+            <li>
+              <span class="date">Oct 2025:</span> 2D Land Streamer
+              Acquisition, ARGAS, Saudi Arabia.
+            </li>
+            <li>
+              <span class="date">Nov 2024:</span> 3D Seismic Data Acquisition
+              Intern, Saudi Aramco &amp; BGP, Saudi Arabia.
+            </li>
+            <li>
+              <span class="date">Dec 2021:</span> Comprehensive Geology
+              Intern, Yangtze University, Hubei, China.
+            </li>
+          </ul>
+        </section>
+
+        <section id="education">
+          <h2>Educations</h2>
+          <ul class="compact-list">
+            <li>
+              <span class="date">2026-Now:</span> Ph.D. Candidate in
+              Geophysics, Uppsala University, Sweden.
+            </li>
+            <li>
+              <span class="date">2024-2026:</span> M.Sc. in Geophysics, King
+              Fahd University of Petroleum &amp; Minerals, Saudi Arabia.
+            </li>
+            <li>
+              <span class="date">2019-2023:</span> B.Eng. in Exploration
+              Technology and Engineering, Yangtze University, China.
+            </li>
+          </ul>
+        </section>
+
+        <section id="awards">
+          <h2>Honors and Awards</h2>
+          <ul class="compact-list">
+            <li><span class="date">2026:</span> 3rd Place, 10th SEG Europe Virtual Student Conference, SEG, Europe.</li>
+            <li><span class="date">2025:</span> Finalist, Machine Learning Competition, KFUPM, Saudi Arabia.</li>
+            <li><span class="date">2024:</span> National Scholarship (Top 3%), Yangtze University, China.</li>
+            <li><span class="date">2023:</span> Excellent Bachelor's Thesis (Top 4%), Yangtze University, China.</li>
+            <li><span class="date">2023:</span> Outstanding Graduate, Yangtze University, China.</li>
+            <li><span class="date">2023:</span> Third Prize, National College Students Geophysics Knowledge Competition, China.</li>
+            <li><span class="date">2023:</span> Second Prize, 10th "BGP CUP" National Geophysics Competition, China.</li>
+            <li><span class="date">2022:</span> National Encouragement Scholarship (Top 10%), Yangtze University, China.</li>
+            <li><span class="date">2021:</span> National Encouragement Scholarship (Top 10%), Yangtze University, China.</li>
+          </ul>
+        </section>
+
+        <section id="teaching">
+          <h2>Teaching</h2>
+          <ul class="compact-list">
+            <li><span class="date">2026 Spring:</span> TA, Inversion of Geophysical Data, Uppsala University.</li>
+            <li><span class="date">2025 Autumn:</span> TA, Special Topic: Deep Learning in Geophysics, KFUPM.</li>
+            <li><span class="date">2025 Spring:</span> TA, Special Topic: Introduction to Machine Learning, KFUPM.</li>
+            <li><span class="date">2024 Autumn:</span> TA, Special Topic: Deep Learning in Geophysics, KFUPM.</li>
+          </ul>
+        </section>
+      </main>
+    </div>
+
+    <footer>
+      Last updated: May 25, 2026. Content is based on the CV in
+      <a href="cv/Yang_s_CV_new.pdf">cv/Yang_s_CV_new.pdf</a>.
+    </footer>
   </body>
 </html>
