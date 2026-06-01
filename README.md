@@ -23,6 +23,10 @@ information.
 The homepage uses the local profile photo at `photo/photo_cropped.PNG` in the
 profile area. If the image cannot load, the page falls back to initials.
 
+The footer includes a total website view counter powered by
+[`hits.sh`](https://hits.sh/). Because GitHub Pages serves this site statically,
+the counter uses an external badge endpoint instead of local server-side state.
+
 linkedIn: https://www.linkedin.com/in/yang-cui-414aa6321/
 Researchgate: https://www.researchgate.net/profile/Yang-Cui-35?ev=hdr_xprf
 Email: yang.cui512@gmail.com
