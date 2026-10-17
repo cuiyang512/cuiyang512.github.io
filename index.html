@@ -3,385 +3,52 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Yang Cui - Homepage</title>
-    <style>
-      :root {
-        --bg: #fbfbf8;
-        --paper: #ffffff;
-        --ink: #222222;
-        --muted: #646464;
-        --line: #d8ddd9;
-        --soft: #eef3ef;
-        --accent: #226f54;
-        --accent-strong: #174f3c;
-        --link: #1667a6;
-        --link-dark: #0d466f;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        margin: 0;
-        background: var(--bg);
-        color: var(--ink);
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-        font-size: 15px;
-        line-height: 1.55;
-      }
-
-      a {
-        color: var(--link);
-        text-decoration: none;
-      }
-
-      a:hover,
-      a:focus {
-        color: var(--link-dark);
-        text-decoration: underline;
-      }
-
-      .topbar {
-        position: sticky;
-        top: 0;
-        z-index: 10;
-        border-bottom: 1px solid var(--line);
-        background: rgba(251, 251, 248, 0.96);
-        backdrop-filter: blur(12px);
-      }
-
-      .nav {
-        display: flex;
-        align-items: center;
-        gap: 24px;
-        width: min(1120px, calc(100% - 32px));
-        margin: 0 auto;
-        min-height: 48px;
-        overflow-x: auto;
-        white-space: nowrap;
-      }
-
-      .nav a:first-child {
-        color: var(--ink);
-        font-weight: 700;
-      }
-
-      .layout {
-        display: grid;
-        grid-template-columns: 292px minmax(0, 1fr);
-        gap: 44px;
-        width: min(1120px, calc(100% - 32px));
-        margin: 0 auto;
-        padding: 38px 0 60px;
-      }
-
-      .profile {
-        position: sticky;
-        top: 74px;
-        align-self: start;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: var(--paper);
-        padding: 24px;
-        box-shadow: 0 18px 45px rgba(33, 44, 38, 0.06);
-      }
-
-      .photo-wrap {
-        position: relative;
-        width: 100%;
-        max-width: 228px;
-        aspect-ratio: 1;
-        margin: 0 auto 18px;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: var(--soft);
-        overflow: hidden;
-      }
-
-      .photo-fallback {
-        display: grid;
-        width: 100%;
-        height: 100%;
-        place-items: center;
-        color: #777777;
-        font-size: 3.2rem;
-        font-weight: 700;
-      }
-
-      .photo {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .photo:not([src]),
-      .photo[src=""] {
-        display: none;
-      }
-
-      .profile h1 {
-        margin: 0 0 6px;
-        font-size: 1.7rem;
-        line-height: 1.2;
-      }
-
-      .profile .affiliation {
-        margin: 0 0 12px;
-        color: var(--muted);
-      }
-
-      .profile .focus {
-        margin: 0 0 16px;
-        text-align: left;
-      }
-
-      .profile ul {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        text-align: left;
-      }
-
-      .profile li {
-        margin: 7px 0;
-      }
-
-      .social-links {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin: 18px 0 16px;
-      }
-
-      .social-links a {
-        display: inline-grid;
-        width: 38px;
-        height: 38px;
-        place-items: center;
-        border: 1px solid var(--line);
-        border-radius: 6px;
-        background: var(--paper);
-        color: var(--ink);
-      }
-
-      .social-links a:hover,
-      .social-links a:focus {
-        border-color: var(--accent);
-        color: var(--accent-strong);
-        text-decoration: none;
-      }
-
-      .social-links svg {
-        width: 22px;
-        height: 22px;
-      }
-
-      .gmail-icon .gmail-red {
-        fill: #c5221f;
-      }
-
-      .gmail-icon .gmail-blue {
-        fill: #4285f4;
-      }
-
-      .gmail-icon .gmail-green {
-        fill: #34a853;
-      }
-
-      .gmail-icon .gmail-yellow {
-        fill: #fbbc04;
-      }
-
-      .contact-label {
-        display: inline-block;
-        min-width: 66px;
-        color: var(--muted);
-      }
-
-      .hero {
-        padding: 4px 0 18px;
-      }
-
-      .eyebrow {
-        margin: 0 0 8px;
-        color: var(--accent);
-        font-weight: 700;
-      }
-
-      .hero h2 {
-        max-width: 760px;
-        margin: 0 0 14px;
-        border: 0;
-        font-size: clamp(2rem, 4vw, 3.1rem);
-        line-height: 1.08;
-      }
-
-      .hero .lead {
-        max-width: 740px;
-        color: #3d3d3d;
-        font-size: 1.08rem;
-      }
-
-      .quick-links {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 18px;
-      }
-
-      .quick-links a {
-        display: inline-flex;
-        align-items: center;
-        min-height: 36px;
-        padding: 0 12px;
-        border: 1px solid var(--line);
-        border-radius: 6px;
-        background: var(--paper);
-        color: var(--ink);
-        font-weight: 600;
-      }
-
-      .quick-links a:hover,
-      .quick-links a:focus {
-        border-color: var(--accent);
-        color: var(--accent-strong);
-        text-decoration: none;
-      }
-
-      main section {
-        padding-top: 14px;
-        margin-bottom: 34px;
-      }
-
-      h2 {
-        margin: 0 0 14px;
-        border-bottom: 1px solid var(--line);
-        font-size: 1.55rem;
-        line-height: 1.25;
-      }
-
-      h3 {
-        margin: 22px 0 10px;
-        font-size: 1rem;
-      }
-
-      p {
-        margin: 0 0 12px;
-      }
-
-      .news,
-      .compact-list,
-      .pub-list {
-        margin: 0;
-        padding-left: 20px;
-      }
-
-      .news li,
-      .compact-list li,
-      .pub-list li {
-        margin: 8px 0;
-      }
-
-      .pub-list li {
-        margin-bottom: 13px;
-      }
-
-      .tag {
-        display: inline-block;
-        min-width: 94px;
-        margin-right: 4px;
-        color: var(--muted);
-        font-family: Menlo, Consolas, monospace;
-        font-size: 0.88rem;
-      }
-
-      .date {
-        color: var(--muted);
-        font-weight: 700;
-      }
-
-      .note {
-        color: var(--muted);
-        font-size: 0.92rem;
-      }
-
-      footer {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        flex-wrap: wrap;
-        width: min(1120px, calc(100% - 32px));
-        margin: 0 auto;
-        padding: 20px 0 36px;
-        border-top: 1px solid var(--line);
-        color: var(--muted);
-        font-size: 0.92rem;
-      }
-
-      .view-counter {
-        display: inline-flex;
-        align-items: center;
-        line-height: 1;
-      }
-
-      .view-counter img {
-        display: block;
-        height: 20px;
-      }
-
-      @media (max-width: 820px) {
-        .layout {
-          grid-template-columns: 1fr;
-          gap: 28px;
-        }
-
-        .profile {
-          position: static;
-        }
-
-        .photo-wrap {
-          margin-left: 0;
-          width: 180px;
-          height: 180px;
-        }
-      }
-    </style>
+    <title>Yang Cui | Geophysics &amp; Scientific Machine Learning</title>
+    <meta name="description" content="Yang Cui, Ph.D. student in Geophysics at Uppsala University. Research on scientific machine learning, DAS denoising, surface waves, and seismic reconstruction.">
+    <meta name="theme-color" content="#226f54">
+    <link rel="stylesheet" href="assets/site.css">
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <header class="topbar">
       <nav class="nav" aria-label="Primary navigation">
-        <a href="#">Homepage</a>
-        <a href="#about">About Me</a>
-        <a href="#news">News</a>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
         <a href="#research">Research</a>
         <a href="#publications">Publications</a>
-        <a href="#presentations">Presentations</a>
-        <a href="#experience">Experience</a>
-        <a href="#education">Education</a>
-        <a href="#awards">Honors and Awards</a>
-        <a href="#teaching">Teaching</a>
+        <a href="#software">Software</a>
+        <a href="cv/Yang_s_CV_new.pdf">CV</a>
       </nav>
     </header>
 
+    <main id="main-content" tabindex="-1">
+      <section id="home" class="home" aria-labelledby="home-title">
+        <div class="home-intro">
+          <p class="eyebrow">Geophysics &amp; Scientific Machine Learning</p>
+          <h1 id="home-title">Yang Cui</h1>
+          <p class="home-role">Ph.D. Student in Geophysics <span aria-hidden="true">&middot;</span> Uppsala University</p>
+          <h2>Scientific Machine Learning for Seismic Data</h2>
+          <p class="lead">
+            I develop physics-aware learning methods to separate surface waves,
+            denoise distributed acoustic sensing data, and reconstruct seismic wavefields.
+          </p>
+          <div class="quick-links" aria-label="Explore my work">
+            <a href="#research">Explore research</a>
+            <a href="#software">Open-source software</a>
+            <a href="mailto:yang.cui512@gmail.com">Get in touch</a>
+          </div>
+        </div>
+        <a class="home-portrait" href="photo/photo_cropped.PNG" aria-label="View full-size portrait of Yang Cui">
+          <img src="photo/photo_cropped.PNG" width="986" height="986" alt="Portrait of Yang Cui" fetchpriority="high" decoding="async">
+        </a>
+      </section>
+
     <div class="layout">
       <aside class="profile">
-        <div class="photo-wrap">
-          <div class="photo-fallback">YC</div>
-          <img class="photo" src="photo/photo_cropped.PNG" alt="Portrait of Yang Cui" onerror="this.style.display='none'">
-        </div>
-        <h1>Yang Cui</h1>
+        <p class="profile-name">Yang Cui</p>
         <p class="affiliation">Ph.D. Student in Geophysics<br>Uppsala University</p>
         <p class="focus">
-          Focusing on scientific machine learning, seismic signal processing,
-          distributed acoustic sensing, and geophysical inverse problems.
+          Scientific machine learning, DAS, surface waves, and inverse problems.
         </p>
         <div class="social-links" aria-label="Profile links">
           <a href="https://github.com/cuiyang512" aria-label="GitHub" title="GitHub">
@@ -415,24 +82,7 @@
         </ul>
       </aside>
 
-      <main>
-        <section class="hero" aria-labelledby="intro-title">
-          <p class="eyebrow">Scientific machine learning for geophysics</p>
-          <h2 id="intro-title">Machine learning and signal processing for seismic data.</h2>
-          <p class="lead">
-            I develop machine-learning and signal-processing methods for
-            distributed acoustic sensing, seismic denoising, reconstruction,
-            earthquake detection, and geophysical inversion.
-          </p>
-          <div class="quick-links" aria-label="Profile links">
-            <a href="#publications">Publications</a>
-            <a href="#presentations">Presentations</a>
-            <a href="#research">Research Areas</a>
-            <a href="cv/Yang_s_CV_new.pdf">CV</a>
-            <a href="mailto:yang.cui512@gmail.com">Contact</a>
-          </div>
-        </section>
-
+      <div class="main-sections">
         <section id="about">
           <h2>About Me</h2>
           <p>
@@ -441,141 +91,230 @@
             and <a href="https://www.uu.se/en/contact-and-organisation/staff?query=N18-827">Dr. Ayse Kaslilar Sisman</a>.
           </p>
           <p>
-            My research interests include scientific machine learning for
-            geophysics (AI4GEO), distributed acoustic sensing (DAS),
-            surface-wave processing and inversion, seismic denoising and
-            reconstruction, and earthquake seismology.
-          </p>
-          <p>
             I received my M.Sc. in Geophysics from King Fahd University of
-            Petroleum &amp; Minerals, supervised by
+            Petroleum &amp; Minerals (KFUPM), supervised by
             <a href="https://cpg.kfupm.edu.sa/bio/dr-umair-bin-waheed/">Dr. Umair bin Waheed</a>
             and <a href="https://www.jsg.utexas.edu/researcher/yangkang_chen/">Dr. Yangkang Chen</a>,
             and my B.Eng. in Exploration Technology and Engineering from
             Yangtze University.
           </p>
+          <div class="section-links" aria-label="More about me">
+            <a href="#news">News</a>
+            <a href="#presentations">Presentations</a>
+            <a href="#experience">Field experience</a>
+            <a href="#education">Education</a>
+            <a href="#awards">Awards</a>
+            <a href="#teaching">Teaching</a>
+          </div>
+        </section>
+
+        <section id="research">
+          <h2>Selected Research</h2>
+          <p class="section-intro">Connecting physical constraints with learning from seismic data.</p>
+          <div class="research-list">
+            <article class="research-item">
+              <a class="research-figure" href="assets/surface-wave.webp" aria-label="Enlarge surface-wave mode separation results">
+                <img src="assets/surface-wave.webp" width="1100" height="629" alt="Input wavefield, separated fundamental and higher modes, and their dispersion spectra." loading="lazy">
+              </a>
+              <div>
+                <span class="research-topic">Surface waves · Preprint, 2026</span>
+                <h3>Separating surface-wave modes with physics</h3>
+                <p>A dispersion-guided deep inverse operator separates fundamental and higher modes without labeled training data.</p>
+                <div class="resource-links"><a href="https://arxiv.org/abs/2607.12808">Paper</a><a href="bib/surface-wave.bib" download>BibTeX</a></div>
+              </div>
+            </article>
+            <article class="research-item">
+              <a class="research-figure" href="assets/das-denoising.webp" aria-label="Enlarge DAS denoising results">
+                <img src="assets/das-denoising.webp" width="700" height="470" alt="Raw Utah FORGE DAS data and the denoised wavefield from the attention-based deep image prior method." loading="lazy">
+              </a>
+              <div>
+                <span class="research-topic">DAS · TGRS, 2025</span>
+                <h3>Recovering signals in noisy DAS records</h3>
+                <p>Attention-based deep image prior suppresses background noise in DAS-VSP data without clean training labels.</p>
+                <div class="resource-links"><a href="https://doi.org/10.1109/TGRS.2025.3533597">Paper</a><a href="https://github.com/cuiyang512/Unsupervised-DAS-Denoising">Code</a><a href="bib/cuij03.bib" download>BibTeX</a></div>
+              </div>
+            </article>
+            <article class="research-item">
+              <a class="research-figure" href="assets/seismic-reconstruction.webp" aria-label="Enlarge seismic reconstruction results">
+                <img src="assets/seismic-reconstruction.webp" width="1100" height="580" alt="Reference, corrupted seismic data with missing traces, and reconstructed data, alongside their frequency-wavenumber spectra." loading="lazy">
+              </a>
+              <div>
+                <span class="research-topic">Reconstruction · Geophysics, 2024</span>
+                <h3>Learning to denoise and reconstruct wavefields</h3>
+                <p>Ground-truth-free learning with channel attention jointly suppresses noise and recovers missing seismic traces.</p>
+                <div class="resource-links"><a href="https://doi.org/10.1190/geo2023-0592.1">Paper</a><a href="bib/cuij02.bib" download>BibTeX</a></div>
+              </div>
+            </article>
+          </div>
         </section>
 
         <section id="news">
           <h2>News</h2>
           <ul class="news">
             <li>
-              <span class="date">2026:</span> Started as a Ph.D. Student in
-              Geophysics at Uppsala University.
+              <span class="date">2026 Jul:</span>
+              Our new preprint,
+              <a href="https://arxiv.org/abs/2607.12808">
+                “Dispersion-Guided Physics-Aware Deep Inverse Operator for Surface Wave Mode Separation”
+              </a>,
+              is now available online.
             </li>
             <li>
-              <span class="date">2026:</span> 3rd Place, 10th SEG Europe
-              Virtual Student Conference.
+              <span class="date">2026 Jun:</span>
+              I attended the EAGE Annual Conference, where I gave four oral presentations
+              on physics-aware deep learning and neural operators.
             </li>
             <li>
-              <span class="date">2026:</span> Co-authored journal articles in
-              <em>Scientific Reports</em> and <em>Artificial Intelligence in
-              Geosciences</em>, and an arXiv preprint on seismic data
-              denoising.
+              <span class="date">2026 May:</span>
+              Won 3rd place at the 10th SEG Europe Virtual Student Conference.
             </li>
             <li>
-              <span class="date">2025:</span> Published first-author journal
-              articles in <em>Geophysical Journal International</em> and
-              <em>IEEE Transactions on Geoscience and Remote Sensing</em>.
-            </li>
-            <li>
-              <span class="date">2025:</span> Presented conference work at the
-              SEG International Exposition and Annual Meeting and the 86th EAGE
-              Annual Conference &amp; Exhibition.
-            </li>
-            <li>
-              <span class="date">2025:</span> Finalist, Machine Learning
-              Competition, KFUPM.
+              <span class="date">2026 Mar:</span>
+              Started my Ph.D. in Geophysics at Uppsala University.
             </li>
           </ul>
+          <details class="news-archive">
+            <summary>Earlier news</summary>
+            <ul class="news">
+              <li>
+              <span class="date">2026 Jan:</span>
+              Graduated from KFUPM with an M.S. in Geophysics.
+            </li>
+              <li>
+              <span class="date">2025 Jun:</span>
+              Gave three oral presentations at the EAGE Annual Conference in Toulouse,
+              France.
+            </li>
+              <li>
+              <span class="date">2025 Feb:</span>
+              Selected as a finalist in the KFUPM Machine Learning Competition.
+            </li>
+            </ul>
+          </details>
         </section>
 
-        <section id="research">
-          <h2>Research Areas</h2>
-          <ul class="compact-list">
-            <li>Scientific machine learning for geophysics and AI4GEO.</li>
-            <li>Distributed acoustic sensing data processing and DAS-VSP denoising.</li>
-            <li>Neural operators for seismic reconstruction and denoising.</li>
-            <li>Earthquake signal detection, surface-wave processing, and inversion.</li>
-            <li>Physics-aware learning for geophysical inverse problems.</li>
-          </ul>
+
+        <section id="software">
+          <h2>Open-source Software</h2>
+          <p class="section-intro">Code and notebooks for reproducing and building on my research.</p>
+          <div class="software-list">
+            <article class="software-item">
+              <h3><a href="https://github.com/cuiyang512/SeisReconNO">SeisReconNO</a></h3>
+              <p>A U-Net-enhanced Fourier neural operator for 3D seismic reconstruction, with training and comparison notebooks.</p>
+              <div class="resource-links"><a href="https://github.com/cuiyang512/SeisReconNO">Repository</a><a href="https://doi.org/10.1016/j.aiig.2026.100212">Paper</a></div>
+            </article>
+            <article class="software-item">
+              <h3><a href="https://github.com/cuiyang512/Unsupervised-DAS-Denoising">Unsupervised DAS Denoising</a></h3>
+              <p>Reproducible material for DAS-VSP denoising with attention-based deep image prior.</p>
+              <div class="resource-links"><a href="https://github.com/cuiyang512/Unsupervised-DAS-Denoising">Repository</a><a href="https://doi.org/10.1109/TGRS.2025.3533597">Paper</a></div>
+            </article>
+            <article class="software-item">
+              <h3><a href="https://github.com/cuiyang512/FNO-Eikonal-Solver">FNO Eikonal Solver</a></h3>
+              <p>Notebooks exploring Fourier neural operators for solving the Eikonal equation.</p>
+              <div class="resource-links"><a href="https://github.com/cuiyang512/FNO-Eikonal-Solver">Repository</a></div>
+            </article>
+          </div>
+          <p class="note"><a href="https://github.com/cuiyang512?tab=repositories">All repositories on GitHub &rarr;</a></p>
         </section>
 
         <section id="publications">
           <h2>Publications</h2>
-          <h3>Journal Articles - First Author</h3>
+          <p class="note"><a href="bib/publications.bib" download>Download publication bibliography</a></p>
+          <h3>Preprints</h3>
           <ol class="pub-list">
             <li>
-              <span class="tag">arXiv</span>Cui, Yang, Anikiev, D., Waheed,
+              <span class="tag">arXiv</span><strong>Cui, Yang</strong>, Swaminadhan, S., Chen, Y., Schiffer, C.,
+              &amp; Papadopoulou M. Dispersion-Guided Physics-Aware Deep Inverse Operator
+              for Surface Wave Mode Separation.
+              <em>arXiv preprint</em> arXiv:2607.12808 (2026).
+              <div class="resource-links" aria-label="Publication resources"><a href="https://arxiv.org/abs/2607.12808">Paper</a><a href="bib/surface-wave.bib" download>BibTeX</a></div>
+            </li>
+            <li>
+              <span class="tag">arXiv</span><strong>Cui, Yang</strong>, Anikiev, D., Waheed,
               U. B. &amp; Chen, Y. Learning from Imperfect Labels: A
               Physics-Aware Neural Operator with Application to DAS Data
               Denoising. <em>arXiv preprint</em> arXiv:2511.15638 (2025).
+              <div class="resource-links" aria-label="Publication resources"><a href="https://arxiv.org/abs/2511.15638">Paper</a><a href="bib/cuij05.bib" download>BibTeX</a></div>
             </li>
             <li>
-              <span class="tag">GJI</span>Cui, Yang, Bai, M., Wu, J. &amp;
+              <span class="tag">arXiv</span>Zhao, J., Waheed, U. B., Sun, J.,
+              <strong>Cui, Yang</strong>, Savva, N. &amp; Verschuur, E. Parameter-Efficient
+              Adaptation of Pre-Trained Vision Foundation Models for Active and
+              Passive Seismic Data Denoising. <em>arXiv preprint</em>
+              arXiv:2605.10953 (2026).
+              <div class="resource-links" aria-label="Publication resources"><a href="https://arxiv.org/abs/2605.10953">Paper</a><a href="bib/otherj05.bib" download>BibTeX</a></div>
+            </li>
+          </ol>
+
+          <h3>Journal Articles — First Author</h3>
+          <ol class="pub-list">
+            <li>
+              <span class="tag">GJI</span><strong>Cui, Yang</strong>, Bai, M., Wu, J. &amp;
               Chen, Y. Earthquake signal detection using a multiscale feature
               fusion network with hybrid attention mechanism.
               <em>Geophysical Journal International</em> 240, 988-1008 (2025).
+              <div class="resource-links" aria-label="Publication resources"><a href="https://doi.org/10.1093/gji/ggae423">Paper</a><a href="bib/cuij04.bib" download>BibTeX</a></div>
             </li>
             <li>
-              <span class="tag">TGRS</span>Cui, Yang, Waheed, U. B. &amp;
+              <span class="tag">TGRS</span><strong>Cui, Yang</strong>, Waheed, U. B. &amp;
               Chen, Y. Unsupervised deep learning for DAS-VSP denoising using
               attention-based deep image prior. <em>IEEE Transactions on
               Geoscience and Remote Sensing</em> 63, 1-14 (2025).
+              <div class="resource-links" aria-label="Publication resources"><a href="https://doi.org/10.1109/TGRS.2025.3533597">Paper</a><a href="https://github.com/cuiyang512/Unsupervised-DAS-Denoising">Code</a><a href="bib/cuij03.bib" download>BibTeX</a></div>
             </li>
             <li>
-              <span class="tag">TGRS</span>Cui, Yang, Bai, M., Zhou, Z. &amp;
+              <span class="tag">TGRS</span><strong>Cui, Yang</strong>, Bai, M., Zhou, Z. &amp;
               Chen, Y. One-dimensional dictionary learning with variational
               sparse representation for single-channel seismic denoising.
               <em>IEEE Transactions on Geoscience and Remote Sensing</em> 62,
               1-13 (2024).
+              <div class="resource-links" aria-label="Publication resources"><a href="https://doi.org/10.1109/TGRS.2024.3400313">Paper</a><a href="bib/cuij01.bib" download>BibTeX</a></div>
             </li>
             <li>
-              <span class="tag">Geophysics</span>Cui, Yang, Wu, J., Bai, M.
+              <span class="tag">Geophysics</span><strong>Cui, Yang</strong>, Wu, J., Bai, M.
               &amp; Chen, Y. Ground-truth-free deep learning for 3D seismic
               denoising and reconstruction with channel attention mechanism.
               <em>Geophysics</em> 89, V503-V520 (2024).
+              <div class="resource-links" aria-label="Publication resources"><a href="https://doi.org/10.1190/geo2023-0592.1">Paper</a><a href="bib/cuij02.bib" download>BibTeX</a></div>
             </li>
           </ol>
 
-          <h3>Journal Articles - Co-Author</h3>
+          <h3>Journal Articles — Co-Author</h3>
           <ol class="pub-list">
             <li>
-              <span class="tag">arXiv</span>Zhao, J., Waheed, U. B., Sun, J.,
-              Cui, Yang, Savva, N. &amp; Verschuur, E. Parameter-Efficient
-              Adaptation of Pre-Trained Vision Foundation Models for Active and
-              Passive Seismic Data Denoising. <em>arXiv preprint</em>
-              arXiv:2605.10953 (2026).
-            </li>
-            <li>
-              <span class="tag">Sci Rep</span>Al-Qadasi, B., Cui, Yang,
+              <span class="tag">Sci Rep</span>Al-Qadasi, B., <strong>Cui, Yang</strong>,
               Waheed, U. B. &amp; Wang, H. F. A novel deep-learning model to
               convert DAS strain to geophone particle velocity: application to
               PoroTomo data from the Brady geothermal field.
               <em>Scientific Reports</em> (2026).
+              <div class="resource-links" aria-label="Publication resources"><a href="https://doi.org/10.1038/s41598-026-37888-y">Paper</a><a href="bib/otherj03.bib" download>BibTeX</a></div>
             </li>
             <li>
-              <span class="tag">AIG</span>Traversa, A., Cui, Yang&dagger;,
+              <span class="tag">AIG</span>Traversa, A., <strong>Cui, Yang</strong>&dagger;,
               Waheed, U. B. &amp; Chen, Y. SeisReconNO: Leveraging a
               U-Net-Enhanced Fourier neural operator for 3D seismic
               reconstruction. <em>Artificial Intelligence in Geosciences</em>,
               100212 (2026).
+              <div class="resource-links" aria-label="Publication resources"><a href="https://doi.org/10.1016/j.aiig.2026.100212">Paper</a><a href="https://github.com/cuiyang512/SeisReconNO">Code</a><a href="bib/otherj04.bib" download>BibTeX</a></div>
             </li>
             <li>
               <span class="tag">TGRS</span>Bai, M., Yang, B., Wu, J., Zhou,
-              Z., Cui, Yang, Ma, Z. &amp; Zeng, Y. Efficient Convolutional
+              Z., <strong>Cui, Yang</strong>, Ma, Z. &amp; Zeng, Y. Efficient Convolutional
               Sparse Coding Based on Penalized Weighted Least Squares for
               Seismic Data Denoising. <em>IEEE Transactions on Geoscience and
               Remote Sensing</em> 62, 1-12 (2024).
+              <div class="resource-links" aria-label="Publication resources"><a href="https://doi.org/10.1109/TGRS.2024.3459877">Paper</a><a href="bib/otherj02.bib" download>BibTeX</a></div>
             </li>
             <li>
               <span class="tag">TGRS</span>Zhou, Z., Bai, M., Wu, J. &amp;
-              Cui, Yang. Coherent noise attenuation by kurtosis-guided adaptive
+              <strong>Cui, Yang</strong>. Coherent noise attenuation by kurtosis-guided adaptive
               dictionary learning based on variational sparse representation.
               <em>IEEE Transactions on Geoscience and Remote Sensing</em> 61,
               1-10 (2023).
+              <div class="resource-links" aria-label="Publication resources"><a href="https://doi.org/10.1109/TGRS.2023.3286791">Paper</a><a href="bib/otherj01.bib" download>BibTeX</a></div>
             </li>
           </ol>
+
           <p class="note">&dagger; Equal contribution.</p>
         </section>
 
@@ -583,52 +322,52 @@
           <h2>Conference Presentations</h2>
           <ol class="pub-list">
             <li>
-              <span class="tag">SEG 2025</span>Cui, Yang, Waheed, U. B., Song,
+              <span class="tag">SEG 2025</span><strong>Cui, Yang</strong>, Waheed, U. B., Song,
               C. &amp; Chen, Y. Leveraging Kolmogorov-Arnold network empowered
               Fourier neural operator to solve Eikonal equation. <em>SEG
               International Exposition and Annual Meeting</em>, SEG-2025
               (2025).
             </li>
             <li>
-              <span class="tag">EAGE 2025</span>Traversa, A., Cui, Y. &amp;
+              <span class="tag">EAGE 2025</span>Traversa, A., <strong>Cui, Y.</strong> &amp;
               Waheed, U. B. Learning a Robust 3D Seismic Data Reconstruction
               Operator using UFNO. <em>86th EAGE Annual Conference &amp;
               Exhibition</em>, 1-5 (2025).
             </li>
             <li>
-              <span class="tag">EAGE 2025</span>Cui, Y., Huff, O. R., Waheed,
+              <span class="tag">EAGE 2025</span><strong>Cui, Y.</strong>, Huff, O. R., Waheed,
               U. B., Lie, J. E., Evensen, A. K. &amp; Bugge, A. J. Marine
               Seismic Near Offset Data Reconstruction Using a KAN-Powered FNO.
               <em>86th EAGE Annual Conference &amp; Exhibition</em>, 1-5
               (2025).
             </li>
             <li>
-              <span class="tag">EAGE 2025</span>Cui, Y., Waheed, U. B. &amp;
+              <span class="tag">EAGE 2025</span><strong>Cui, Y.</strong>, Waheed, U. B. &amp;
               Chen, Y. Robust DAS Denoising Using a Self-Supervised Method with
               Kurtosis-Based Feature Selection. <em>86th EAGE Annual Conference
               &amp; Exhibition</em>, 1-5 (2025).
             </li>
             <li>
               <span class="tag">EAGE 2025</span>Abdullin, A., Waheed, U. B.
-              &amp; Cui, Y. Seismic Event Detection with Fourier Neural
+              &amp; <strong>Cui, Y.</strong> Seismic Event Detection with Fourier Neural
               Operator. <em>86th EAGE Annual Conference &amp; Exhibition</em>,
               1-5 (2025).
             </li>
             <li>
               <span class="tag">AGU 2024</span>Waheed, U. B., Al-Qadasi, B.
-              &amp; Cui, Yang. Evaluating seismic array processing using a
+              &amp; <strong>Cui, Yang</strong>. Evaluating seismic array processing using a
               novel Deep Learning-based converted DAS strain-ground particle
               velocity at Brady geothermal field. <em>AGU Fall Meeting
               Abstracts</em>, S21G-3487 (2024).
             </li>
             <li>
-              <span class="tag">SEG 2024</span>Cui, Yang, Waheed, U. B. &amp;
+              <span class="tag">SEG 2024</span><strong>Cui, Yang</strong>, Waheed, U. B. &amp;
               Chen, Y. Background noise suppression for DAS-VSP data using
               attention-based deep image prior. <em>SEG International
               Exposition and Annual Meeting</em>, SEG-2024 (2024).
             </li>
             <li>
-              <span class="tag">SEG 2024</span>Zhou, Y., Cui, Yang &amp;
+              <span class="tag">SEG 2024</span>Zhou, Y., <strong>Cui, Yang</strong> &amp;
               Hanafy, S. Super-virtual interferometry for noise elimination on
               vertical seismic profiling (VSP). <em>SEG International
               Exposition and Annual Meeting</em>, SEG-2024 (2024).
@@ -639,6 +378,10 @@
         <section id="experience">
           <h2>Experience</h2>
           <ul class="compact-list">
+            <li>
+              <span class="date">Jun 2026:</span> Surface Wave for Graphite Exploration, Uppsala University,
+              Woxna, Sweden.
+            </li>
             <li>
               <span class="date">Oct 2025:</span> 2D Land Streamer
               Acquisition, ARGAS, Saudi Arabia.
@@ -696,19 +439,20 @@
           <h2>Teaching</h2>
           <ul class="compact-list">
             <li><span class="date">2026 Spring:</span> TA, Inversion of Geophysical Data, Uppsala University.</li>
-            <li><span class="date">2025 Autumn:</span> TA, Special Topic: Deep Learning in Geophysics, KFUPM.</li>
+            <li><span class="date">2025 Fall:</span> TA, Special Topic: Deep Learning in Geophysics, KFUPM.</li>
             <li><span class="date">2025 Spring:</span> TA, Special Topic: Introduction to Machine Learning, KFUPM.</li>
-            <li><span class="date">2024 Autumn:</span> TA, Special Topic: Deep Learning in Geophysics, KFUPM.</li>
+            <li><span class="date">2024 Fall:</span> TA, Special Topic: Deep Learning in Geophysics, KFUPM.</li>
           </ul>
         </section>
-      </main>
+      </div>
     </div>
+    </main>
 
     <footer>
       <span>
-        Last updated: May 25, 2026. Content is based on the CV in
+        Last updated: October 17, 2026. Background and publication details from the CV in
         <a href="cv/Yang_s_CV_new.pdf">cv/Yang_s_CV_new.pdf</a> and the
-        publication bibliography in <a href="bib/ref.bib">bib/ref.bib</a>.
+        publication bibliography in <a href="bib/publications.bib">the publication bibliography</a>.
       </span>
       <a class="view-counter" href="https://hits.sh/cuiyang512.github.io/" aria-label="View website traffic statistics">
         <img

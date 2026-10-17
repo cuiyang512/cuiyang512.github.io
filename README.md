@@ -38,3 +38,27 @@ To preview locally, open `index.html` in a browser or run a simple static server
 ```sh
 python3 -m http.server 8000
 ```
+
+## Homepage content and maintenance
+
+The page highlights selected research using existing figures, lists public
+research software, and groups preprints separately from published journal
+articles. Older news remains available under **Earlier news**.
+
+- Edit page content in `index.html` and styles in `assets/site.css`.
+- Research figure sources are documented in `assets/README.md`.
+- Each listed journal article/preprint has a portable citation in `bib/`.
+  `bib/publications.bib` combines those citations without the CV template's
+  sample entries or author-formatting commands. Keep individual citations and
+  the combined download synchronized when updating a publication.
+- `bib/ref.bib` remains the original CV bibliography.
+- Paper and public repository links supplement the CV. Only link code when its
+  connection to the publication is established.
+
+The site remains static and requires no build step or JavaScript. Preview the
+homepage by opening `index.html`, or use the static server command above.
+
+The opening **Home** section showcases the existing portrait at
+`photo/photo_cropped.PNG`, with the introduction and research links alongside
+it on desktop and beneath it on smaller screens. Click the photo to view it
+at full resolution.
